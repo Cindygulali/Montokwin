@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Montokwin: Platform daring terbagus</title>
+  <style>
+    body {
+  background: #ffffff;
+  color: #111111;
+}
+
+h1, h2, h3, h4, h5, h6,
+p, span, small, label, li, strong, a {
+  color: #111111;
+}
+
+.product-detail,
+.detail-panel,
+.right-panel,
+.card {
+  color: #111111;
+}
+
+.benefits li,
+.stock-info,
+.extra-info,
+.option-note,
+.product-desc,
+.product-meta {
+  color: #444444 !important;
+}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+  --bg: #ffffff;
+  --card: #ffffff;
+  --card-2: #f5f5f5;
+  --text: #111111;
+  --muted: #666666;
+  --line: #dddddd;
+  --gold: #d8a24c;
+  --gold-2: #f1c06b;
+  --danger: #b83a3a;
+  --shadow: 0 12px 40px rgba(0,0,0,.12);
+  --radius: 18px;
+    }
+
+    body {
+      font-family:Arial,helvetica, sans-serif;
+      background: #ffffff ;
+      color: #111111;
+      line-height: 1.5 ;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+   .topbar {
+    positiion: sticky ;
+    top: 0
+    z-index :50;
+    backdrop-filter: blur(10px)
+    background: rgba(255,255,255,.95) 
+    border-bottom: 1px solid #e5e5e5;
+   }
+    
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 74px;
+      gap: 20px;
+    }
+
+    .brand {
+      font-family: Georgia, 'Times New Roman', serif ;
+      font-size: 20px ;
+      fpmt
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #111111;
+      font-size: 14px;
+      opacity: .9;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-2);
+    }
+
+    .hero {
+      padding: 26px 0 8px;
+    }
+
+    .breadcrumbs {
+      color: #8f8f8f;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1.02fr .98fr;
+      gap: 34px;
+      align-items: start;
+      padding: 16px 0 44px;
+    }
+
+    .gallery-card,
+    .info-card,
+    .promo-card,
+    .faq-card,
+    .details-card,
+    .delivery-card {
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .gallery-card {
+      padding: 18px;
+    }
+
+    .main-image-wrap {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #0d0d0d;
+      aspect-ratio: 1 / 1;
+      border: 1px solid rgba(255,255,255,.05);
+    }
+
+    .main-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .img-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(216,162,76,.92);
+      color: #161616;
+      font-weight: 800;
+      font-size: 12px;
+      padding: 7px 12px;
+      border-radius: 999px;
+    }
+
+    .thumb-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .thumb {
+      background: #121212;
+      border: 2px solid transparent;
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: .2s ease;
+      aspect-ratio: 1 / 1;
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .thumb.active,
+    .thumb:hover {
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .info-card {
+      padding: 24px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(216,162,76,.14);
+      color: var(--gold-2);
+      border: 1px solid rgba(216,162,76,.25);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .6px;
+      text-transform: uppercase;
+      padding: 7px 11px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .title {
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.08;
+      margin-bottom: 10px;
+      font-weight: 800;
+    }
+
+    .subtext {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+
+    .rating-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #e7d29e;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: end;
+      gap: 14px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .price {
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--gold-2);
+      line-height: 1;
+    }
+
+    .old-price {
+      color: #808080;
+      text-decoration: line-through;
+      font-size: 16px;
+      padding-bottom: 3px;
+    }
+
+    .discount {
+      background: rgba(184,58,58,.14);
+      color: #ff9b9b;
+      border: 1px solid rgba(184,58,58,.28);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 10px;
+      margin-bottom: 3px;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--line);
+      margin: 18px 0;
+    }
+
+    .option-group {
+      margin-bottom: 18px;
+    }
+
+    .option-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+      color: #111111;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .option-hint {
+      color: #111111;
+      font-weight: 400;
+      font-size: 13px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      padding: 11px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--card-2);
+      color: #111111;
+      cursor: pointer;
+      font-size: 14px;
+      transition: .2s ease;
+      user-select: none;
+    }
+
+    .chip.active,
+    .chip:hover {
+      border-color: var(--gold);
+      color: var(--gold-2);
+      background: rgba(216,162,76,.08);
+    }
+
+    .qty-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin: 16px 0 20px;
+      flex-wrap: wrap;
+    }
+
+    .qty-box {
+      display: inline-flex;
+      align-items: center;
+      background: var(--card-2);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .qty-btn {
+      width: 46px;
+      height: 46px;
+      border: none;
+      background: transparent;
+      color: #111111;
+      cursor: pointer;
+      font-size: 22px;
+    }
+
+    .qty-btn:hover {
+      background: rgba(255,255,255,.04);
+    }
+
+    .qty-value {
+      width: 54px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .stock {
+      font-size: 14px;
+      color: #98d69b;
+    }
+
+    .cta-stack {
+      display: grid;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 14px;
+      padding: 15px 18px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 800;
+      transition: .2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(180deg, var(--gold-2), var(--gold));
+      color: #161616;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.03);
+    }
+
+    .btn-secondary {
+      background: #1f1f1f;
+      border: 1px solid var(--line);
+      color: #f0f0f0;
+    }
+
+    .btn-secondary:hover {
+      background: #282828;
+    }
+
+    .mini-points {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .mini-points div {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      padding-bottom: 42px;
+    }
+
+    .details-card,
+    .delivery-card,
+    .promo-card,
+    .faq-card {
+      padding: 22px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .detail-list {
+      display: grid;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .detail-list strong {
+      color: #111111;
+    }
+
+    .promo-card {
+      margin-bottom: 24px;
+      background:
+        radial-gradient(circle at top right, rgba(216,162,76,.18), transparent 30%),
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+    }
+
+    .promo-title {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: var(--gold-2);
+    }
+
+    .promo-text {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .promo-banner {
+      display: inline-block;
+      background: rgba(216,162,76,.12);
+      border: 1px solid rgba(216,162,76,.25);
+      color: #ffe0a8;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-weight: 700;
+    }
+
+    .faq-item {
+      border-top: 1px solid var(--line);
+    }
+
+    .faq-item:first-child {
+      border-top: none;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: #111111;
+      text-align: left;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 18px 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .faq-icon {
+      font-size: 22px;
+      color: var(--gold-2);
+      flex-shrink: 0;
+    }
+
+    .faq-answer {
+      display: none;
+      color: var(--muted);
+      padding: 0 0 16px;
+      font-size: 14px;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    .footer {
+      border-top: 1px solid #e5e5e5
+      padding : 26px 0 40px ;
+      color: #666666 ;
+      font-size: 14px ;
+      text-align: center ;
+    }
+
+    .sticky-buy {
+      position: sticky;
+      bottom: 16px;
+      z-index: 40;
+      margin-top: 20px;
+    }
+
+    .sticky-inner {
+      display: none;
+      background: rgba(20,20,20,.92);
+      border: 1px solid rgba(255,255,255,.08);
+      backdrop-filter: blur(12px);
+      border-radius: 18px;
+      padding: 12px;
+      box-shadow: var(--shadow);
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .sticky-left {
+      min-width: 0;
+    }
+
+    .sticky-name {
+      font-weight: 800;
+      font-size: 15px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .sticky-price {
+      color: var(--gold-2);
+      font-size: 14px;
+      margin-top: 2px;
+    }
+
+    .sticky-inner .btn {
+      padding: 12px 16px;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 920px) {
+      .layout,
+      .bottom-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav {
+        padding: 10px 0;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .container {
+        width: min(100% - 20px, 1180px);
+      }
+
+      .gallery-card,
+      .info-card,
+      .promo-card,
+      .faq-card,
+      .details-card,
+      .delivery-card {
+        border-radius: 16px;
+      }
+
+      .thumb-row {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .title {
+        font-size: 32px;
+      }
+
+      .price {
+        font-size: 30px;
+      }
+
+      .sticky-inner {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container nav">
+      <div class="brand">montokwin</div>
+      <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Menu</a>
+        <a href="#">Promo</a>
+        <a href="#">Tentang</a>
+        <a href="#">Kontak</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="breadcrumbs">Masuk sekarang</div>
+
+      <div class="layout">
+        <div class="gallery-card">
+          <div class="main-image-wrap">
+  <span class="img-badge">Trending sekarang</span>
+  <a href="https://starlight1688.pages.dev" target="_blank">
+    <img
+      id="mainImage"
+      src="images/expensify.png"
+      alt="Menu utama"
+    />
+  </a>
+</div>
+
+          <div class="thumb-row">
+            <button class="thumb active" data-img="images/expensify.png">
+              <img src="images/expensify.png" alt="thumb 1">
+            </button>
+
+            <button class="thumb" data-img="images/montokwin promotion.png">
+              <img src="images/montokwin promotion.png" alt="thumb 2">
+            </button>
+
+            <button class="thumb" data-img="images/expensify.png">
+              <img src="images/expensify.png" alt="thumb 3">
+            </button>
+
+            <button class="thumb" data-img="images/expensify.png">
+              <img src="images/expensify.png" alt="thumb 4">
+            </button>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="pill">Menu Pilihan</div>
+          <h1 class="title">Montokwin: Slot Deposit DANA min 10k</h1>
+          <p class="subtext">
+            <p class="subtext">
+  Daftar sekarang dan ambil bonus new member spesial dengan proses cepat, mudah, dan langsung siap dimainkan.
+</p>
+          </p>
+
+          <div class="rating-row">
+            <span>★★★★★</span>
+            <span>4.9/5</span>
+            <span style="color:#8f8f8f;">• 1.168 ulasan</span>
+          </div>
+
+          <div class="price-row">
+            <div class="price" id="displayPrice">Rp 10.000</div>
+            <div class="old-price">Rp 50.000</div>
+            <div class="discount">New Member 20%</div>
+            <div class="discount">Harian 10%</div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="option-group">
+            <div class="option-label">
+              <span>Pilih Bonus</span>
+              <span class="option-hint" id="selectedVariantText">Original</span>
+            </div>
+            <div class="chips" id="variantChips">
+              <button class="chip active" data-name="Original" data-price="10000">Original</button>
+              <button class="chip" data-name="Spicy" data-price="10000">Spicy</button>
+              <button class="chip" data-name="Cheese" data-price="10000">Cheese</button>
+              <button class="chip" data-name="Family Pack" data-price="10000">Family Pack</button>
+            </div>
+          </div>
+
+          <div class="option-group">
+            <div class="option-label">
+              <span>Keuntungan tambahan</span>
+              <span class="option-hint">Opsional</span>
+            </div>
+            <div class="chips">
+              <button class="chip">Extra Saus</button>
+              <button class="chip">Kentang</button>
+              <button class="chip">Minuman</button>
+            </div>
+          </div>
+
+          <div class="qty-wrap">
+            <div class="qty-box">
+              <button class="qty-btn" id="minusBtn">−</button>
+              <div class="qty-value" id="qtyValue">1</div>
+              <button class="qty-btn" id="plusBtn">+</button>
+            </div>
+            <div class="stock">Stok tersedia • Siap dipesan hari ini</div>
+          </div>
+
+          <div class="cta-stack">
+            <button class="btn btn-primary" id="buyNowBtn">Gabung sekarang</button>
+          </div>
+
+          <div class="mini-points">
+            <div>✓ Akses cepat tanpa hambatan</div>
+            <div>✓ Deposit minimal 10ribu</div>
+            <div>✓ Withdraw minimal 50ribu</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-grid">
+        <div>
+          <div class="promo-card">
+            <div class="promo-title">Montokwin slot deposit DANA</div>
+            <p class="promo-text">
+              Pesan 2 paket dan dapat bonus minuman gratis. Cocok dipakai buat bagian
+              promo seperti halaman toko modern.
+            </p>
+            <div class="promo-banner">Bonus minuman untuk 2 pembelian</div>
+          </div>
+
+          <div class="details-card">
+            <div class="section-title">Produk</div>
+            <div class="detail-list">
+              <div><strong>Isi paket:</strong> daging asap, roti, kentang, saus signature.</div>
+              <div><strong>Porsi:</strong> 1–2 orang untuk varian biasa, 3–4 orang untuk family pack.</div>
+              <div><strong>Waktu penyajian:</strong> 20–30 menit.</div>
+              <div><strong>Catatan:</strong> bisa request level pedas sesuai selera.</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="delivery-card" style="margin-bottom:24px;">
+            <div class="section-title">Daftar & Gabung sekarang</div>
+            <div class="detail-list">
+              <div><strong>Delivery:</strong> tersedia untuk area tertentu.</div>
+              <div><strong>Pickup:</strong> bisa ambil langsung ke outlet.</div>
+              <div><strong>Jam operasional:</strong> 10.00 - 22.00.</div>
+              <div><strong>Pembayaran:</strong> cash, transfer, QRIS.</div>
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <div class="section-title">FAQ</div>
+
+            <div class="faq-item open">
+              <button class="faq-question">
+                Apakah bisa request tingkat kepedasan?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Bisa. Kamu tinggal tambahkan catatan saat checkout atau saat konfirmasi pesanan.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Apakah tersedia delivery?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Ya, tersedia delivery untuk area yang terjangkau. Kamu juga bisa aktifkan opsi pickup.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Bagaimana cara ubah harga tiap varian?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Harga bisa diubah dari atribut <strong>data-price</strong> pada tombol varian di bagian HTML.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Gambar menu bisa diganti?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Bisa. Tinggal ganti URL gambar pada bagian thumbnail dan gambar utama.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sticky-buy">
+        <div class="sticky-inner">
+          <div class="sticky-left">
+            <div class="sticky-name">Paket BBQ Premium Special</div>
+            <div class="sticky-price" id="stickyPrice">Rp 89.000</div>
+          </div>
+          <button class="btn btn-primary" id="stickyBuyBtn">Pesan</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      © 2026 Montokwin. Powered by Shopify.
+    </div>
+  </footer>
+
+  <script>
+    const thumbs = document.querySelectorAll(".thumb");
+    const mainImage = document.getElementById("mainImage");
+
+    thumbs.forEach((thumb) => {
+      thumb.addEventListener("click", () => {
+        thumbs.forEach(t => t.classList.remove("active"));
+        thumb.classList.add("active");
+        mainImage.src = thumb.dataset.img;
+      });
+    });
+
+    const plusBtn = document.getElementById("plusBtn");
+    const minusBtn = document.getElementById("minusBtn");
+    const qtyValue = document.getElementById("qtyValue");
+    let qty = 1;
+
+    plusBtn.addEventListener("click", () => {
+      qty++;
+      qtyValue.textContent = qty;
+    });
+
+    minusBtn.addEventListener("click", () => {
+      if (qty > 1) {
+        qty--;
+        qtyValue.textContent = qty;
+      }
+    });
+
+    const variantChips = document.querySelectorAll("#variantChips .chip");
+    const displayPrice = document.getElementById("displayPrice");
+    const stickyPrice = document.getElementById("stickyPrice");
+    const selectedVariantText = document.getElementById("selectedVariantText");
+
+    function formatRupiah(number) {
+      return "Rp " + number.toLocaleString("id-ID");
+    }
+
+    variantChips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        variantChips.forEach(c => c.classList.remove("active"));
+        chip.classList.add("active");
+
+        const name = chip.dataset.name;
+        const price = Number(chip.dataset.price);
+
+        selectedVariantText.textContent = name;
+        displayPrice.textContent = formatRupiah(price);
+        stickyPrice.textContent = formatRupiah(price);
+      });
+    });
+
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach((item) => {
+      const btn = item.querySelector(".faq-question");
+      btn.addEventListener("click", () => {
+        item.classList.toggle("open");
+      });
+    });
+
+    function handleBuy() { window.open("https://starlight1688.pages.dev")}
+
+    document.getElementById("buyNowBtn").addEventListener("click", handleBuy);
+    document.getElementById("stickyBuyBtn").addEventListener("click", handleBuy);
+  </script>
+</body>
+</html> 
